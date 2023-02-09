@@ -1,0 +1,139 @@
+<!-- Emily Do -->
+<!-- CS 341 HW2 -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
+    <title>Emily's Cheesecake Order Form</title>
+
+    <!--Stylesheet Link-->
+    <link rel="stylesheet" type="text/css" href="stylesheets/Stylesheet.css" />
+</head>
+
+<body>
+    <div id="layout">
+        <!-- Page Title -->
+        <header>
+            <h1>Cheesecake Order Form</h1>
+        </header>
+
+        <!-- Cheesecake Image -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg/800px-Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg?20171018065901"
+            alt="ugly cheesecake" style="width:300px; height:300px">
+
+
+        <!-- Quantity Dropdown-->
+        <p>
+            <label for="quantity">Quantity:</label> <br>
+            <select name="quantity" id="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <br>
+        </p>
+
+        <!-- Toppings -->
+        <h2>
+            <label class="toppingTitle" for="Topping">Topping:</label><br>
+        </h2>
+
+        <!-- Radio Buttons for Toppings -->
+        <div class="toppingOptions">
+            <form>
+                <input type="radio" name="toppings" value="Plain">
+                <label for="Plain" id="plain">Plain</label><br>
+                <input type="radio" name="toppings" value="Cherry">
+                <label for="Cherry" id="cherry">Cherry</label><br>
+                <input type="radio" name="toppings" value="Chocolate">
+                <label for="Chocolate" id="chocolate">Chocolate</label><br>
+                <br>
+            </form>
+        </div>
+
+        <!--Special Instructions Textbox-->
+        <label for="notes" class="notes" id="notes">Notes:</label> <br>
+        <textarea class="testInstr" id="testInstr" name="testInstr" rows="5" cols="50"
+            placeholder="Enter any special instructions here."></textarea> <br> <br>
+
+        <button type="button" class="orderButton" id="orderButton" onclick="">Order</button>
+
+        <!-- Months Dropdown -->
+        <table class="monthTable">
+            <tr>
+                <td>
+                    <h3>Orders for</h3>
+                </td>
+                <td>
+                    <div class="dropdown"><select name="dropdown" id="selectMonth" class="form-control"
+                            onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                            <option value="">Jan</option>
+                            <option value="">Feb</option>
+                            <option value="">Mar</option>
+                            <option value="">Apr</option>
+                            <option value="">May</option>
+                            <option value="">Jun</option>
+                            <option value="">Jul</option>
+                            <option value="">Aug</option>
+                            <option value="">Sep</option>
+                            <option value="">Oct</option>
+                            <option value="">Nov</option>
+                            <option value="">Dec</option>
+                        </select></div>
+                </td>
+            </tr>
+        </table>
+        <td>
+
+            <!-- Total Orders Last Month -->
+            <ul>
+                <li>11 Cherry</li>
+                <li>17 Chocolate</li>
+                <li>31 Plain</li>
+            </ul>
+    </div>
+
+    <!-- Form Validation  -->
+    <div style="display: none;" id="formValidation">
+        <h1 class="ty">Thank you! Your order has been placed.</h1>
+        <h4 class="final" id="finalQuantity"></h4>
+        <h4 class="final" id="finalTopping"></h4>
+        <p class="final" id="finalInstructions"></p>
+    </div>
+
+
+    <!-- Vegan Warning -->
+    <script>
+        $("#orderButton").click(function () {
+            if ($("#testInstr").val().toLowerCase().indexOf("vegan") != -1) {
+                alert("Warning: Cheesecake contains dairy!!");
+            }
+            else {
+                $("#layout").removeAttr("style").hide();
+                $("#formValidation").show(); // display final message and order details
+                $("#finalTopping").html("Topping: " + $("input[name='toppings']:checked").val());
+                $("#finalQuantity").html("Quantity: " + $("#quantity").val());
+                $("#finalInstructions").html("Notes: " + $("#testInstr").val());
+            }
+        })
+    </script>
+
+    <!-- Dropdown Hover -->
+    <script>
+        $(function () {
+            $("#selectMonth").hover(function () {
+                $(this).attr('size', 4);
+            },
+                function () {
+                    $(this).attr('size', 1);
+                });
+        });
+    </script>
+
+</body>
+
+</html>
