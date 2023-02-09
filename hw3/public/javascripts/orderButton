@@ -1,0 +1,23 @@
+/*
+* Emily Do
+* Creates a pop-up that warns the user that cheesecake contains dairy.
+*/
+
+eventHandler = function(event) {
+    $("#orderButton").click(function () {
+        if ($("#testInstr").val().toLowerCase().indexOf("vegan") != -1) {
+            alert("Warning: Cheesecake contains dairy!!");
+        }
+        else {
+            $("#layout").removeAttr("style").hide();
+            $("#formValidation").show(); // display final message and order details
+            $("#finalTopping").html("Topping: " + $("input[name='toppings']:checked").val());
+            $("#finalQuantity").html("Quantity: " + $("#quantity").val());
+            $("#finalInstructions").html("Notes: " + $("#testInstr").val());
+        }
+    })
+}
+
+$(function() {
+    $("#orderButton").click(eventHandler);
+});

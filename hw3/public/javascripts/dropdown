@@ -1,0 +1,13 @@
+/*
+* Emily Do
+* Creates a dropdown menu for the months.
+*/
+
+$(function () {
+    $("#selectMonth").hover(function () {
+        $(this).attr('size', 4);
+    },
+        function () {
+            $(this).attr('size', 1);
+        });
+});

@@ -3,11 +3,10 @@
 
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    </script>
-
     <title>Emily's Cheesecake Order Form</title>
 
     <!--Stylesheet Link-->
@@ -107,31 +106,11 @@
 
 
     <!-- Vegan Warning -->
-    <script>
-        $("#orderButton").click(function () {
-            if ($("#testInstr").val().toLowerCase().indexOf("vegan") != -1) {
-                alert("Warning: Cheesecake contains dairy!!");
-            }
-            else {
-                $("#layout").removeAttr("style").hide();
-                $("#formValidation").show(); // display final message and order details
-                $("#finalTopping").html("Topping: " + $("input[name='toppings']:checked").val());
-                $("#finalQuantity").html("Quantity: " + $("#quantity").val());
-                $("#finalInstructions").html("Notes: " + $("#testInstr").val());
-            }
-        })
+    <script src="javascripts/orderButton">
     </script>
 
-    <!-- Dropdown Hover -->
-    <script>
-        $(function () {
-            $("#selectMonth").hover(function () {
-                $(this).attr('size', 4);
-            },
-                function () {
-                    $(this).attr('size', 1);
-                });
-        });
+    <!-- Months Dropdown -->
+    <script src="javascripts/dropdown">
     </script>
 
 </body>
